@@ -33,7 +33,7 @@ permissions:
 
 jobs:
   upload:
-    if: github.repository_owner == 'jax-ml'
+    if: (github.repository_owner == 'jax-ml) && ((github.event_name != 'workflow_run' || github.event.workflow_run.head_repository.full_name == github.repository))
     name: "Upload Workflow Metadata"
     runs-on: linux-x86-n4-4
     container: us-docker.pkg.dev/ml-oss-artifacts-published/ml-public-container/ml-build:latest
